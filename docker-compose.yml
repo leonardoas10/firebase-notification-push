@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+    react-app:
+        container_name: react-app
+        build: ./react-app
+        volumes:
+            - './react-app:/app'
+            - /app/node_modules
+        env_file: .env
+        environment:
+            - REACT_APP_VAPID_KEY=$REACT_APP_VAPID_KEY
+        ports:
+            - '3000:3000'
+        networks:
+            - app-network
+        healthcheck:
+            test: ['CMD-SHELL', 'curl -f http://localhost:3000 || exit 1']
+            interval: 5s
+            timeout: 5s
+            retries: 3
+            start_period: 20s
+
+    node-app:
+        container_name: node-app
+        build: ./node-app
+        ports:
+            - '8080:8080'
+        networks:
+            - app-network
+networks:
+    app-network:
+        driver: bridge
+
+volumes:
+    dbdata:
