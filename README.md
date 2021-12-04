@@ -15,6 +15,6 @@
 
 ## Configuracion - Firebase
 
--   Reemplazar tokenId en node-app/firebase-init.js en la funcion sendToDevice() y credenciales
+-   Reemplazar tokenId por el entregado en la consola del navegador [ App ](http://localhost:3000/) en node-app/firebase-init.js en la funcion sendToDevice(), ademas de las credenciales
 -   Reemplazar credenciales en react-app/public/firebase-messging-sw.js y react-app/src/firebaseInit.js
 -   Reemplazar REACT_APP_VAPID_KEY por la KEY generada en cloud messaging
